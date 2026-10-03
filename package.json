@@ -9,7 +9,8 @@
     "prebuild": "svelte-kit sync",
     "prepare": "svelte-kit sync",
     "preview": "vite preview --host 0.0.0.0",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "test": "node scripts/merge.test.mjs && node scripts/storage.test.mjs"
   },
   "dependencies": {
     "@sveltejs/adapter-static": "3.0.10",
