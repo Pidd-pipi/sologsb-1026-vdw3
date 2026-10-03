@@ -178,6 +178,57 @@ button, input, textarea, select { font: inherit; }
 .diff-list article.removed > span { color: #a2191f; }
 .diff-list b { font-size: 12px; }
 .diff-list p { margin: 3px 0 0; color: #6f6f6f; font-size: 10px; }
+.workspace-tabs.five { grid-template-columns: repeat(5, 1fr); }
+.conflict-banner { position: sticky; top: 64px; z-index: 30; display: flex; align-items: center; gap: 12px; padding: 10px 24px; background: #fff8e1; border-bottom: 2px solid #f1c21b; }
+.conflict-banner.error { background: #fff1f1; border-bottom-color: #da1e28; }
+.conflict-banner :global(.bx--inline-notification) { flex: 1; min-width: 0; }
+.activity-row.stale { box-shadow: inset 4px 0 #f1c21b; }
+.stale-mark { color: #f1c21b !important; font-style: normal; animation: recompute-spin 1.4s ease-in-out; }
+@keyframes recompute-spin { from { transform: rotate(-180deg); opacity: .2; } to { transform: rotate(0); opacity: 1; } }
+/* 合并处理视图 */
+.merge-view { padding: 30px clamp(20px, 4vw, 60px) 44px; }
+.merge-inline { margin: 0 0 16px; max-width: 100%; }
+.merge-layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(280px, .9fr); gap: 14px; align-items: start; }
+.merge-main { display: grid; gap: 14px; }
+.package-export, .package-import, .merge-preview, .pending-card, .drafts-card, .reload-card, .recompute-card { margin: 0; padding: 20px; border: 1px solid #e0e0e0; background: #fff; }
+.package-export h3, .package-import h3, .reload-card h3 { margin: 2px 0 8px; font-size: 16px; }
+.export-form { display: grid; grid-template-columns: .8fr 1.4fr; gap: 12px; margin: 12px 0; }
+.merge-stats { display: flex; flex-wrap: wrap; gap: 5px; justify-content: end; }
+.merge-reasons { margin: 14px 0; padding: 10px 12px 10px 26px; background: #f4f4f4; color: #525252; font-size: 11px; line-height: 1.7; }
+.conflict-list { display: grid; gap: 12px; margin-top: 14px; }
+.conflict-card { padding: 14px; border: 1px solid #da1e28; border-left-width: 4px; background: #fff9f9; }
+.conflict-card[data-side="local"], .conflict-card[data-side="incoming"], .conflict-card[data-side="drop"] { border-color: #198038; background: #f7fff9; }
+.conflict-card > header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.conflict-card > header b { font-size: 13px; }
+.conflict-card > header small { color: #8d8d8d; font-size: 10px; }
+.conflict-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+.conflict-columns > article { padding: 12px; border: 1px dashed #8d8d8d; background: #fff; }
+.conflict-columns > article.chosen { border: 2px solid #0f62fe; background: #edf5ff; }
+.conflict-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.conflict-head span { color: #0f62fe; font: 600 11px "IBM Plex Mono", monospace; }
+.drop-conflict { margin-top: 4px; }
+.merge-confirm { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid #e0e0e0; }
+.merge-confirm .empty-state { margin: 0; max-width: 420px; }
+.merge-side { display: grid; gap: 14px; }
+.pending-row, .draft-row { display: grid; gap: 4px; padding: 12px 0; border-bottom: 1px solid #e0e0e0; }
+.pending-row b, .draft-row b { font-size: 12px; }
+.pending-row small, .draft-row small { color: #8d8d8d; font-size: 10px; }
+.pending-row p { margin: 2px 0; color: #525252; font-size: 11px; }
+.pending-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+/* 失效重算 */
+.recompute-card { margin: 0 0 16px; }
+.recompute-actions { display: flex; align-items: center; gap: 8px; }
+.recompute-list { display: grid; gap: 6px; margin-top: 14px; }
+.recompute-row { display: grid; grid-template-columns: 44px 1fr; gap: 10px; padding: 9px 12px; border: 1px solid #e0e0e0; border-left: 3px solid #8a3ffc; background: #faf9ff; text-align: left; cursor: pointer; }
+.recompute-row:hover { background: #f6f2ff; }
+.recompute-badge { height: fit-content; padding: 2px 5px; text-align: center; color: #fff; background: #8a3ffc; font-size: 10px; }
+.recompute-badge.phoneme { background: #0f62fe; }
+.recompute-badge.order { background: #9f1853; }
+.recompute-badge.version { background: #da1e28; }
+.recompute-row b { display: block; font-size: 11px; }
+.recompute-row small { color: #6f6f6f; font-size: 10px; line-height: 1.5; }
+.issue-board > article.fresh-invalid { outline: 2px solid rgba(241, 194, 27, .55); outline-offset: -2px; }
+.recomputed-tag { color: #9f1853 !important; font-weight: 600; }
 .app-footer { min-height: 46px; padding: 14px 24px; display: flex; justify-content: space-between; gap: 20px; color: #c6c6c6; background: #262626; font-size: 10px; }
 @media (max-width: 1180px) {
   .compose-layout { grid-template-columns: 280px 1fr; }
@@ -190,6 +241,9 @@ button, input, textarea, select { font: inherit; }
   .app-header { flex-wrap: wrap; }
   .header-center { order: 3; width: 100%; }
   .workspace-tabs { grid-template-columns: 1fr 1fr; }
+  .workspace-tabs.five { grid-template-columns: repeat(3, 1fr); }
+  .merge-layout, .conflict-columns, .export-form { grid-template-columns: 1fr; }
+  .conflict-banner { position: static; flex-wrap: wrap; }
   .compose-layout { display: block; }
   .activity-sidebar { border-bottom: 1px solid #d8d8d8; }
   .activity-list { display: flex; overflow-x: auto; }
